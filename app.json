@@ -3,7 +3,7 @@
     "name": "flashcards",
     "slug": "mobile-flashcards-udacity",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
+    "sdkVersion": "34.0.0",
     "platforms": [
       "ios",
       "android",
