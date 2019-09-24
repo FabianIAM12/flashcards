@@ -8,6 +8,7 @@ import DeckListOverview from "./DeckListOverview";
 import AddDeck from "./AddDeck";
 import DeckDetail from "./DeckDetail";
 import AddCardToDeck from "./AddCardToDeck";
+import Quiz from "./Quiz";
 
 const router = {
     Decks: {
@@ -63,7 +64,7 @@ const stackConfigMap =
         Home: TabNav,
         DeckDetail: DeckDetail,
         AddCardToDeck: AddCardToDeck,
-        // Quiz: QuizScreen,
+        Quiz: Quiz,
     };
 
 const MainNavigator = createStackNavigator(stackConfigMap, stackOptions);

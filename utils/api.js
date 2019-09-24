@@ -69,7 +69,7 @@ export const addCardToDeck = (deckId, card) =>  {
         data[deckId] = {
             ...data[deckId],
             questions: [
-                ...data[deckId].cards,
+                ...data[deckId].questions,
                 { question: card.question, answer: card.answer }
             ]
         };

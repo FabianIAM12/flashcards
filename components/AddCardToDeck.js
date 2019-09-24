@@ -11,7 +11,6 @@ class AddCardToDeck extends Component {
     state = {
         question: 'Question',
         answer: 'Answer',
-        valid: true,
     };
 
     createCard = () => {
@@ -22,15 +21,13 @@ class AddCardToDeck extends Component {
                 answer: this.state.answer
             };
 
+            this.props.createCard(titleOfDeck, questionCard);
             addCardToDeck(titleOfDeck, questionCard);
-            this.props.addCard(titleOfDeck, questionCard);
             this.setState({
                 question: '',
                 answer: ''
             });
             this.props.navigation.navigate('DeckDetail', {deck: titleOfDeck});
-        } else {
-            this.state.valid = false;
         }
     };
 
@@ -38,14 +35,14 @@ class AddCardToDeck extends Component {
         return (
             <View style={styles.container}>
                 <TextInput
-                    underlineColorAndroid='#2962ff'
+                    underlineColorAndroid='#768fff'
                     style={styles.input}
                     onChangeText={question => this.setState({question})}
                     value={this.state.question}
                     onFocus={() => this.setState({question: '', questionValid: false})}
                 />
                 <TextInput
-                    underlineColorAndroid='#2962ff'
+                    underlineColorAndroid='#768fff'
                     style={styles.input}
                     onChangeText={answer => this.setState({answer})}
                     value={this.state.answer}
@@ -53,7 +50,7 @@ class AddCardToDeck extends Component {
                 />
                 <FlashcardButton style={styles.button} onPress={this.createCard}><Text>Add
                     Question</Text></FlashcardButton>
-                {!this.state.valid && <Text style={styles.error}>Sorry! Not valid!</Text>}
+                {(this.state.answer.length === 0 || this.state.question.length === 0) && <Text style={styles.error}>Sorry! Not valid!</Text>}
             </View>
         );
     }
@@ -77,6 +74,7 @@ const styles = StyleSheet.create({
         fontSize: 17
     },
     button: {
+        width: 500,
         alignItems: "center"
     }
 });

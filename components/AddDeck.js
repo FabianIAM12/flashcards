@@ -49,7 +49,7 @@ class AddDeck extends Component {
                     onChangeText={this.handleInputChange}
                 />
                 <FlashcardButton style={styles.button} onPress={this.handleSubmit}><Text>Add
-                    Question</Text></FlashcardButton>
+                    Deck!</Text></FlashcardButton>
             </View>
         );
     }
