@@ -1,25 +1,23 @@
 import React from 'react';
 import {createAppContainer} from 'react-navigation';
-import {blue, blueDark, gray, purple} from '../utils/colors';
-import DeckListScreen from './DeckList';
-import AddDeckScreen from './AddDeck';
-import QuizScreen from './Quiz';
+import {blue, blueDark, blueLight, gray} from '../utils/colors';
 import {createMaterialTopTabNavigator} from "react-navigation-tabs";
 import {createStackNavigator} from 'react-navigation-stack';
-import IndividualDeckScreen from "./Deck";
-import AddCard from "./AddCard";
 import {FontAwesome, Ionicons} from '@expo/vector-icons';
+import DeckListOverview from "./DeckListOverview";
+import AddDeck from "./AddDeck";
+import DeckDetail from "./DeckDetail";
 
 const router = {
     Decks: {
-        screen: DeckListScreen,
+        screen: DeckListOverview,
         navigationOptions: {
             topBarLabel: 'Decks',
             tabBarIcon: ({tintColor}) => <Ionicons name="ios-bookmarks" size={30} color={tintColor}/>,
         }
     },
     Add: {
-        screen: AddDeckScreen,
+        screen: AddDeck,
         navigationOptions: {
             topBarLabel: 'Add New Deck',
             tabBarIcon: ({tintColor}) => <FontAwesome name="plus-square" size={30} color={tintColor}/>,
@@ -31,18 +29,18 @@ const router = {
 const navigationOptions = {
     tabBarOptions: {
         showIcon: true,
-        activeTintColor: purple,
+        activeTintColor: blueLight,
         style: {
-            padding: 10,
-            height: 60,
+            padding: 12,
+            height: 90,
             fontSize: 18,
             backgroundColor: gray,
-            shadowColor: 'rgba(0, 0, 0, 0.24)',
+            shadowColor: blue,
             shadowOffset: {
                 width: 0,
-                height: 3,
+                height: 5,
             },
-            shadowRadius: 6,
+            shadowRadius: 8,
             shadowOpacity: 1,
         },
     },
@@ -51,7 +49,7 @@ const navigationOptions = {
 const stackOptions = {
     initialRouteName: "Home",
     navigationOptions: {
-        headerTintColor: blue,
+        headerTintColor: blueLight,
         headerStyle: {backgroundColor: blueDark},
         headerTitleStyle: {fontWeight: "bold"}
     }
@@ -62,9 +60,9 @@ const TabNav = createMaterialTopTabNavigator(router, navigationOptions);
 const stackConfigMap =
     {
         Home: TabNav,
-        IndividualDeck: IndividualDeckScreen,
-        Quiz: QuizScreen,
-        AddCard: AddCard,
+        DeckDetail: DeckDetail,
+        // Quiz: QuizScreen,
+        // AddCard: AddCard,
     };
 
 const MainNavigator = createStackNavigator(stackConfigMap, stackOptions);

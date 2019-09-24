@@ -8,7 +8,7 @@ import MainNavigator from "./components/Navigation";
 import TopStatusBar from "./components/TopStatusBar";
 
 
-const store = createStore(reducer, middleware);
+const store = createStore(reducer);
 
 export default function App() {
     return (
