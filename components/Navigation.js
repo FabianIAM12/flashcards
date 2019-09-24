@@ -7,6 +7,7 @@ import {FontAwesome, Ionicons} from '@expo/vector-icons';
 import DeckListOverview from "./DeckListOverview";
 import AddDeck from "./AddDeck";
 import DeckDetail from "./DeckDetail";
+import AddCardToDeck from "./AddCardToDeck";
 
 const router = {
     Decks: {
@@ -61,8 +62,8 @@ const stackConfigMap =
     {
         Home: TabNav,
         DeckDetail: DeckDetail,
+        AddCardToDeck: AddCardToDeck,
         // Quiz: QuizScreen,
-        // AddCard: AddCard,
     };
 
 const MainNavigator = createStackNavigator(stackConfigMap, stackOptions);

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {saveDeck} from '../utils/api';
-import {red} from '../utils/colors';
 import {connect} from 'react-redux';
 import {addDeck} from "../actions";
 import FlashcardButton from "./FlashcardButton";
@@ -44,12 +43,13 @@ class AddDeck extends Component {
         return (
             <View style={styles.container}>
                 <TextInput
-                    style={styles.titleInput}
+                    style={styles.input}
                     value={input}
                     placeholder="Your Topic!"
                     onChangeText={this.handleInputChange}
                 />
-                <FlashcardButton style={styles.button} onPress={this.handleSubmit}><Text>Add Question</Text></FlashcardButton>
+                <FlashcardButton style={styles.button} onPress={this.handleSubmit}><Text>Add
+                    Question</Text></FlashcardButton>
             </View>
         );
     }
@@ -64,16 +64,11 @@ const styles = StyleSheet.create({
     button: {
         alignSelf: "center"
     },
-    error: {
-        fontWeight: 'bold',
-        textAlign: 'center',
-        color: red
-    },
-    titleInput: {
+    input: {
         padding: 10,
         marginTop: 35,
         marginBottom: 10,
-        fontSize: 17
+        fontSize: 15
     },
 });
 

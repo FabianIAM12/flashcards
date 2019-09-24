@@ -17,13 +17,13 @@ class DeckDetail extends Component {
             <View style={styles.container}>
                 <Text style={styles.header}>{deck.title}</Text>
                 <Text style={styles.header}>{deck.questions.length}</Text>
-                {deck.questions.length > 0 && (
+                {(
                     <FlashcardButton onPress={() => {
                         navigation.navigate("Quiz", {deck});
                     }}><Text>Start Quiz!</Text></FlashcardButton>
-                )}
+                ) && deck.questions.length > 0}
                 <FlashcardButton onPress={() => {
-                    navigation.navigate("AddCard", {deck});
+                    navigation.navigate("AddCardToDeck", {deck});
                 }}><Text>Add Question</Text></FlashcardButton>
             </View>
         )
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state, {navigation}) => {
     const id = navigation.getParam("deckId");
-    return ({ deck: state[id]});
+    return ({deck: state[id]});
 };
 
 export default connect(

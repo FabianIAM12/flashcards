@@ -30,7 +30,7 @@ class DeckListOverview extends Component {
     };
 
     navigateToDeck = (id) => {
-        this.props.navigation.navigate('DeckDetail', { deckId: id });
+        this.props.navigation.navigate('DeckDetail', {deckId: id});
     };
 
     render() {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 });
 
 function mapStateToProps(decks) {
-    return { decks };
+    return {decks};
 }
 
 export default connect(mapStateToProps)(DeckListOverview);
