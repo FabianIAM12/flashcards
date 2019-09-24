@@ -1,50 +1,22 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-import CardDeck from "./components/Carddeck";
-import TabNav from "./components/TabNav";
 import reducer from './reducers'
+import {blueDark} from "./utils/colors";
+import MainNavigator from "./components/Navigation";
+import TopStatusBar from "./components/TopStatusBar";
 
-const MainNavigator = createAppContainer(createStackNavigator({
-    home: {
-        screen: TabNav,
-        navigationOptions: {
-            header: null,
-        },
-    },
-    EntryDetail: {
-        screen: CardDeck,
-        navigationOptions: ({navigation}) => ({
-            //headerTintColor: white,
-            /*
-            headerStyle: {
-              backgroundColor: purple,
-            },
-             */
-        }),
-    },
-}));
 
+const store = createStore(reducer, middleware);
 
 export default function App() {
     return (
-        <Provider store={createStore(reducer)}>
-            <View style={styles.container}>
-                <Text>Open up App.js to start working on your app!</Text>
+        <Provider store={store}>
+            <View style={{flex: 1}}>
+                <TopStatusBar backgroundColor={blueDark} barStyle='light-content'/>
                 <MainNavigator/>
             </View>
         </Provider>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
