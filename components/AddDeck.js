@@ -4,6 +4,7 @@ import {saveDeck} from '../utils/api';
 import {connect} from 'react-redux';
 import {addDeck} from "../actions";
 import FlashcardButton from "./FlashcardButton";
+import {blue, gray} from "../utils/colors";
 
 
 class AddDeck extends Component {
@@ -65,10 +66,16 @@ const styles = StyleSheet.create({
         alignSelf: "center"
     },
     input: {
-        padding: 10,
-        marginTop: 35,
-        marginBottom: 10,
-        fontSize: 15
+        backgroundColor: gray,
+        padding: 5,
+        borderRadius: 5,
+        shadowRadius: 5,
+        shadowOpacity: 0.8,
+        shadowColor: "rgba(0, 0, 0, 0.24)",
+        shadowOffset: {
+            width: 4,
+            height: 5
+        }
     },
 });
 
