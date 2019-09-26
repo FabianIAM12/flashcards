@@ -3,12 +3,14 @@ import {StyleSheet, View} from "react-native";
 import {gray, white} from "../utils/colors";
 import SoloQuestionCard from "./SoloQuestionCard";
 import Answer from "./Answer";
+import Score from "./Score";
 
 
 const starterState = {
     score: 0,
     hint: 0,
-    index: 0
+    index: 0,
+    finished: false,
 };
 
 class Quiz extends Component {
@@ -26,29 +28,44 @@ class Quiz extends Component {
 
     gotAnswer = (value) => {
         if (value) {
-            this.state.score +=1;
+            this.state.score += 1;
         } else {
-            this.state.score -=1;
+            this.state.score -= 1;
         }
 
-        if (this.questionDeck.questions.length < this.state.index) {
+        if (this.questionDeck.questions.length > this.state.index) {
             this.state.index += 1;
         }
+        this.state.finished = this.questionDeck.questions.length === this.state.index;
+
+        this.setState({
+            index: this.state.index,
+            score: this.state.score,
+            finished: this.state.finished
+        })
+
     };
+
 
     render() {
         const {
             score,
             hint,
             index,
+            finished,
         } = this.state;
-        console.log(index);
+
+        console.log(finished);
 
         return (
-            <View style={styles.container}>
-                <SoloQuestionCard gotHint={this.gotHint} question={this.questionDeck.questions[index]}/>
-                <Answer submitAnswer={this.gotAnswer}/>
-            </View>
+            !finished ? (
+                <View style={styles.container}>
+                    <SoloQuestionCard gotHint={this.gotHint} question={this.questionDeck.questions[index]}/>
+                    <Answer submitAnswer={this.gotAnswer}/>
+                </View>
+            ) : (
+                <Score score={score} hint={hint} numberOfQuestions={this.questionDeck.questions.length}></Score>
+            )
         )
     }
 }
