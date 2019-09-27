@@ -17,7 +17,7 @@ class Quiz extends Component {
     state = starterState;
     questionDeck = this.props.navigation.getParam("deck");
 
-    restartSession = () => {
+    reset = () => {
         this.setState(starterState);
     };
 
@@ -27,6 +27,10 @@ class Quiz extends Component {
     };
 
     gotAnswer = (value) => {
+        if (this.state.finished) {
+            this.reset();
+        }
+
         if (value) {
             this.state.score += 1;
         } else {
@@ -43,9 +47,15 @@ class Quiz extends Component {
             score: this.state.score,
             finished: this.state.finished
         })
-
     };
 
+    repeatSession = () => {
+        this.reset();
+    };
+
+    goToDecksList = () => {
+        console.log('go back');
+    };
 
     render() {
         const {
@@ -55,7 +65,7 @@ class Quiz extends Component {
             finished,
         } = this.state;
 
-        console.log(finished);
+        console.log(index);
 
         return (
             !finished ? (
@@ -64,7 +74,8 @@ class Quiz extends Component {
                     <Answer submitAnswer={this.gotAnswer}/>
                 </View>
             ) : (
-                <Score score={score} hint={hint} numberOfQuestions={this.questionDeck.questions.length}></Score>
+                <Score score={score} hint={hint} numberOfQuestions={this.questionDeck.questions.length}
+                       repeatSession={this.repeatSession} goToDecksList={this.goToDecksList}></Score>
             )
         )
     }

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {StyleSheet, Text, View} from "react-native";
-import {blue, blueDark, gray, white} from "../utils/colors";
+import {blue, white} from "../utils/colors";
+import FlashcardButton from "./FlashcardButton";
 
 
 class Score extends Component {
@@ -10,8 +11,10 @@ class Score extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>
-                    Congratulations! Your Score: { score }. Needed Hints: { hint } for { numberOfQuestions } Questions!
+                    Congratulations! Your Score: {score}. Needed Hints: {hint} for {numberOfQuestions} Questions!
                 </Text>
+                <FlashcardButton style={styles.button} onPress={() => this.props.goToDecksList()}><Text>Back to Decks!</Text></FlashcardButton>
+                <FlashcardButton style={styles.button} onPress={() => this.props.repeatSession()}><Text>Repeat Session</Text></FlashcardButton>
             </View>
         );
     }
