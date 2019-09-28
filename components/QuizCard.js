@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { blue, white, gray } from "../utils/colors";
+import React, {Component} from "react";
+import {StyleSheet, Text, View} from "react-native";
+import {blue, gray, white} from "../utils/colors";
 import FlashcardButton from "./FlashcardButton";
 
 class QuizCard extends Component {
@@ -8,9 +8,9 @@ class QuizCard extends Component {
         showAnswer: false
     };
 
-    render () {
-        const { showQuestion } = this.state;
-        const { card } = this.props;
+    render() {
+        const {showQuestion} = this.state;
+        const {card} = this.props;
 
         return (
             <View style={styles.container}>
@@ -21,10 +21,10 @@ class QuizCard extends Component {
                         <Text style={styles.text}>{card.question}</Text>
                     )}
                 </View>
-                <View style={{ marginTop: 30 }}>
+                <View style={{marginTop: 30}}>
                     <FlashcardButton
-                        style={{ backgroundColor: gray }}
-                        onPress={this.state.showAnswer=!this.state.showAnswer}
+                        style={{backgroundColor: gray}}
+                        onPress={this.state.showAnswer = !this.state.showAnswer}
                     >{`See ${showQuestion ? "Answer" : "Question"}`}</FlashcardButton>
                 </View>
             </View>

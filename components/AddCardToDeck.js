@@ -21,7 +21,7 @@ class AddCardToDeck extends Component {
                 answer: this.state.answer
             };
             const deck = this.props.navigation.getParam("deck");
-            this.props.addCard(deck.id, questionCard.question, questionCard.answer);
+            this.props.addCard(deck.id, questionCard);
 
             addCardToDeck(deck.id, questionCard);
             this.setState({ question: '', answer: '' });

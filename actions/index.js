@@ -11,21 +11,18 @@ export function receiveDecks(decks) {
 }
 
 export function addDeck(deck) {
-    const id = deck.id;
-    const title = deck.title;
-
     return {
         type: ADD_DECK,
-        id,
-        title
+        id: deck.id,
+        title: deck.title
     }
 }
 
-export function addCard(deckId, question, answer) {
+export function addCard(deckId, question) {
     return {
         type: ADD_CARD,
         deckId,
-        question,
-        answer
+        question: question.question,
+        answer: question.answer
     }
 }

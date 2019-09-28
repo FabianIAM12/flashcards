@@ -44,7 +44,7 @@ class Quiz extends Component {
         }
         finished = this.questionDeck.questions.length === index;
 
-        this.setState({index, score, finished });
+        this.setState({index, score, finished});
 
         clearLocalNotification().then(setLocalNotification)
     };
@@ -54,13 +54,14 @@ class Quiz extends Component {
     };
 
     render() {
-        const { score, hint, index, finished } = this.state;
-        const { navigation } = this.props;
+        const {score, hint, index, finished} = this.state;
+        const {navigation} = this.props;
 
         return (
             !finished ? (
                 <View style={styles.container}>
-                    <SoloQuestionCard gotHint={this.gotHint} question={this.questionDeck.questions[index]} questionsRemaining={this.questionDeck.questions.length - index}/>
+                    <SoloQuestionCard gotHint={this.gotHint} question={this.questionDeck.questions[index]}
+                                      questionsRemaining={this.questionDeck.questions.length - index}/>
                     <Answer submitAnswer={this.gotAnswer}/>
                 </View>
             ) : (

@@ -20,7 +20,7 @@ class SoloQuestionCard extends Component {
 
     render() {
         const {isHidden} = this.state;
-        const {question, questionsRemaining, index} = this.props;
+        const {question, questionsRemaining} = this.props;
         return (
             <View style={styles.card}>
                 <View>
