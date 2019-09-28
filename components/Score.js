@@ -6,18 +6,18 @@ import FlashcardButton from "./FlashcardButton";
 
 class Score extends Component {
     render() {
-        const {score, hint, numberOfQuestions} = this.props;
+        const {score, hint, numberOfQuestions, navigation} = this.props;
 
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>
-                    Congratulations for solving !
+                    Congratulations!
                 </Text>
                 <Text>
                     Your Score: {score}. Needed Hints: {hint} for {numberOfQuestions} Questions!
                 </Text>
                 <FlashcardButton style={styles.button} onPress={() => this.props.repeatSession()}><Text>Repeat Session</Text></FlashcardButton>
-                <FlashcardButton style={styles.button} onPress={() => this.props.goToDecksList()}><Text>Back to Decks!</Text></FlashcardButton>
+                <FlashcardButton style={styles.button} onPress={() => navigation.goBack()}><Text>Back to Deck!</Text></FlashcardButton>
             </View>
         );
     }

@@ -20,13 +20,11 @@ class AddCardToDeck extends Component {
                 question: this.state.question,
                 answer: this.state.answer
             };
+            const deck = this.props.navigation.getParam("deck");
+            this.props.addCard(deck.id, questionCard.question, questionCard.answer);
 
-            this.props.createCard(titleOfDeck, questionCard);
-            addCardToDeck(titleOfDeck, questionCard);
-            this.setState({
-                question: '',
-                answer: ''
-            });
+            addCardToDeck(deck.id, questionCard);
+            this.setState({ question: '', answer: '' });
             this.props.navigation.navigate('DeckDetail', {deck: titleOfDeck});
         }
     };
@@ -46,8 +44,10 @@ class AddCardToDeck extends Component {
                     value={this.state.answer}
                     onFocus={() => this.setState({answer: '', answerValid: false})}
                 />
-                <FlashcardButton style={styles.button} onPress={this.createCard}><Text>Add Question</Text></FlashcardButton>
-                {(this.state.answer.length === 0 || this.state.question.length === 0) && <Text style={styles.error}>Sorry! Not valid!</Text>}
+                <FlashcardButton style={styles.button} onPress={this.createCard}><Text>Add
+                    Question</Text></FlashcardButton>
+                {(this.state.answer.length === 0 || this.state.question.length === 0) &&
+                <Text style={styles.error}>Sorry! Not valid!</Text>}
             </View>
         );
     }
@@ -84,9 +84,8 @@ const styles = StyleSheet.create({
 });
 
 const mapDispatchToProps = dispatch => ({
-    createCard: (deckId, question, answer) => {
-        dispatch(addCard(deckId, question, answer));
-    }
+    addCard: (deckId, question, answer) =>
+        dispatch(addCard(deckId, question, answer))
 });
 
 export default connect(null, mapDispatchToProps)(AddCardToDeck);

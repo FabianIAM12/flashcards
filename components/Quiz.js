@@ -4,6 +4,7 @@ import {gray, white} from "../utils/colors";
 import SoloQuestionCard from "./SoloQuestionCard";
 import Answer from "./Answer";
 import Score from "./Score";
+import {clearLocalNotification, setLocalNotification} from "../utils/notification";
 
 
 const starterState = {
@@ -43,19 +44,18 @@ class Quiz extends Component {
         }
         finished = this.questionDeck.questions.length === index;
 
-        this.setState({index, score, finished })
+        this.setState({index, score, finished });
+
+        clearLocalNotification().then(setLocalNotification)
     };
 
     repeatSession = () => {
         this.reset();
     };
 
-    goToDecksList = () => {
-        return this.props.navigation.getParam("deck");
-    };
-
     render() {
         const { score, hint, index, finished } = this.state;
+        const { navigation } = this.props;
 
         return (
             !finished ? (
@@ -65,7 +65,7 @@ class Quiz extends Component {
                 </View>
             ) : (
                 <Score score={score} hint={hint} numberOfQuestions={this.questionDeck.questions.length}
-                       repeatSession={this.repeatSession} goToDecksList={this.goToDecksList}>
+                       repeatSession={this.repeatSession} navigation={navigation}>
                 </Score>
             )
         )

@@ -34,12 +34,16 @@ const startingData = {
         id: 3,
         questions: [
             {
-                question: 'The Django framework is programmed in JavaScript?',
-                answer: 'Incorrect'
+                question: 'The Django framework is programmed in ... language?',
+                answer: 'Python'
             },
             {
-                question: 'Is Angular programmed in JavaScript?',
+                question: 'Is Django a suitable for Model and View?',
                 answer: 'Correct'
+            },
+            {
+                question: 'Does Django produce good Rest-APIs?',
+                answer: 'Yes'
             }
         ]
     }

@@ -1,6 +1,6 @@
 import {ADD_CARD, ADD_DECK, RECEIVE_DECKS} from "../actions";
 
-const decks = (state = {}, action) => {
+function decks(state = {}, action) {
     switch (action.type) {
         case RECEIVE_DECKS:
             return {
@@ -18,13 +18,17 @@ const decks = (state = {}, action) => {
             };
         }
         case ADD_CARD: {
+            console.log('-----');
+            console.log(action.deckId);
+            console.log(state[action.deckId]);
+            console.log('-----');
             return {
                 ...state,
                 [action.deckId]: {
                     ...state[action.deckId],
                     questions: [
                         ...state[action.deckId].questions,
-                        {question: action.question, answer: action.answer}
+                        { question: action.question, answer: action.answer }
                     ]
                 }
             };

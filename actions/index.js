@@ -21,13 +21,11 @@ export function addDeck(deck) {
     }
 }
 
-export function addCard(deck, question, answer) {
-    const deckId = deck.id;
-
+export function addCard(deckId, question, answer) {
     return {
         type: ADD_CARD,
         deckId,
         question,
-        answer,
+        answer
     }
 }

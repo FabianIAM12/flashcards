@@ -6,17 +6,12 @@ import FlashcardButton from "./FlashcardButton";
 
 
 class DeckDetail extends Component {
-    /*
-    static navigationOptions = ({ navigation }) => ({
-        title: navigation.getParam("title")
-    });
-    */
     render() {
         const {navigation, deck} = this.props;
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>{deck.title}</Text>
-                <Text style={styles.header}>{deck.questions.length}</Text>
+                <Text>Number of Questions: {deck.questions.length}</Text>
                 {deck.questions.length !== 0 && (
                     <FlashcardButton onPress={() => {
                         navigation.navigate("Quiz", {deck});
@@ -38,6 +33,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     header: {
+        fontSize: 34,
         fontWeight: "bold",
         textAlign: "center",
         padding: 10,
