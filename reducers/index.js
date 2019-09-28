@@ -18,10 +18,6 @@ function decks(state = {}, action) {
             };
         }
         case ADD_CARD: {
-            console.log('-----');
-            console.log(action.deckId);
-            console.log(state[action.deckId]);
-            console.log('-----');
             return {
                 ...state,
                 [action.deckId]: {
