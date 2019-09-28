@@ -4,7 +4,7 @@ import {saveDeck} from '../utils/api';
 import {connect} from 'react-redux';
 import {addDeck} from "../actions";
 import FlashcardButton from "./FlashcardButton";
-import {blue, gray} from "../utils/colors";
+import {gray} from "../utils/colors";
 
 
 class AddDeck extends Component {

@@ -8,6 +8,7 @@ import FlashcardButton from "./FlashcardButton";
 class DeckDetail extends Component {
     render() {
         const {navigation, deck} = this.props;
+        console.log(deck);
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>{deck.title}</Text>
@@ -46,7 +47,4 @@ const mapStateToProps = (state, {navigation}) => {
     return ({deck: state[id]});
 };
 
-export default connect(
-    mapStateToProps,
-    null
-)(DeckDetail);
+export default connect(mapStateToProps, null)(DeckDetail);

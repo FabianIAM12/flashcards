@@ -6,8 +6,8 @@ const NOTIFICATION_KEY = 'FLASHCARDS';
 
 function createNotification() {
     return {
-        title: 'Log your stats!',
-        body: "👋 don't forget to study today!",
+        title: 'Study today!',
+        body: "👋 don't forget - daily progress is the key to success!",
         ios: {
             sound: true,
         },

@@ -3,9 +3,10 @@ import {StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 import {blueLight, white} from '../utils/colors';
 
 class DeckListEntry extends Component {
+
     render() {
         return (
-            <TouchableWithoutFeedback onPress={() => this.props.navigateToDeck(this.props.deck.title)}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigateToDeck(this.props.deck.id)}>
                 <View style={styles.entry}>
                     <Text style={styles.headline}>{this.props.deck.title} ({this.props.deck.questions.length})</Text>
                 </View>

@@ -1,7 +1,7 @@
 import {AsyncStorage} from 'react-native';
 
 const startingData = {
-    React: {
+    1: {
         title: 'React',
         id: 1,
         questions: [
@@ -15,7 +15,7 @@ const startingData = {
             }
         ]
     },
-    JavaScript: {
+    2: {
         title: 'JavaScript',
         id: 2,
         questions: [
@@ -29,7 +29,7 @@ const startingData = {
             }
         ]
     },
-    Django: {
+    3: {
         title: 'Django',
         id: 3,
         questions: [

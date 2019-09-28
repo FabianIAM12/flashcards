@@ -29,8 +29,8 @@ class DeckListOverview extends Component {
         return index.toString();
     };
 
-    navigateToDeck = (id) => {
-        this.props.navigation.navigate('DeckDetail', {deckId: id});
+    navigateToDeck = (key) => {
+        this.props.navigation.navigate('DeckDetail', {deckId: this.props.decks[key].id});
     };
 
     render() {
