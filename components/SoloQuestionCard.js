@@ -20,11 +20,12 @@ class SoloQuestionCard extends Component {
 
     render() {
         const {isHidden} = this.state;
-        const {question} = this.props;
+        const {question, questionsRemaining, index} = this.props;
         return (
             <View style={styles.card}>
                 <View>
                     <Text style={styles.questionHeadline}>{question.question}</Text>
+                    <Text>({questionsRemaining} Question left!)</Text>
                     {!isHidden && (<Text style={styles.questionHeadline}>{question.answer}</Text>)}
                 </View>
                 <Text style={styles.hiddenText} onPress={this.toggleCard}>{isHidden ? (<Text>Show Solution</Text>) : (
@@ -42,6 +43,9 @@ const styles = StyleSheet.create({
         color: blueDark
     },
     hiddenText: {
+        color: white
+    },
+    questionsLeft: {
         color: white
     },
     card: {

@@ -23,30 +23,27 @@ class Quiz extends Component {
 
     gotHint = () => {
         this.state.hint += 1;
-        console.log(this.state.hint);
     };
 
     gotAnswer = (value) => {
-        if (this.state.finished) {
+        let {finished, score, index} = this.state;
+
+        if (finished) {
             this.reset();
         }
 
         if (value) {
-            this.state.score += 1;
+            score += 1;
         } else {
-            this.state.score -= 1;
+            score -= 1;
         }
 
-        if (this.questionDeck.questions.length > this.state.index) {
-            this.state.index += 1;
+        if (this.questionDeck.questions.length > index) {
+            index += 1;
         }
-        this.state.finished = this.questionDeck.questions.length === this.state.index;
+        finished = this.questionDeck.questions.length === index;
 
-        this.setState({
-            index: this.state.index,
-            score: this.state.score,
-            finished: this.state.finished
-        })
+        this.setState({index, score, finished })
     };
 
     repeatSession = () => {
@@ -54,28 +51,22 @@ class Quiz extends Component {
     };
 
     goToDecksList = () => {
-        console.log('go back');
+        return this.props.navigation.getParam("deck");
     };
 
     render() {
-        const {
-            score,
-            hint,
-            index,
-            finished,
-        } = this.state;
-
-        console.log(index);
+        const { score, hint, index, finished } = this.state;
 
         return (
             !finished ? (
                 <View style={styles.container}>
-                    <SoloQuestionCard gotHint={this.gotHint} question={this.questionDeck.questions[index]}/>
+                    <SoloQuestionCard gotHint={this.gotHint} question={this.questionDeck.questions[index]} questionsRemaining={this.questionDeck.questions.length - index}/>
                     <Answer submitAnswer={this.gotAnswer}/>
                 </View>
             ) : (
                 <Score score={score} hint={hint} numberOfQuestions={this.questionDeck.questions.length}
-                       repeatSession={this.repeatSession} goToDecksList={this.goToDecksList}></Score>
+                       repeatSession={this.repeatSession} goToDecksList={this.goToDecksList}>
+                </Score>
             )
         )
     }
