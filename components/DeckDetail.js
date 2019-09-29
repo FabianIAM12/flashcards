@@ -11,7 +11,7 @@ class DeckDetail extends Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.header}>{deck.title}</Text>
-                <Text>Number of Questions: {deck.questions.length}</Text>
+                <Text style={styles.subheader}>Number of Questions: {deck.questions.length}</Text>
                 {deck.questions.length !== 0 && (
                     <FlashcardButton onPress={() => {
                         navigation.navigate("Quiz", {deck});
@@ -30,14 +30,16 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: white,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        paddingTop: 5,
     },
     header: {
         fontSize: 34,
         fontWeight: "bold",
         textAlign: "center",
-        padding: 10,
-        marginBottom: 10
+    },
+    subheader: {
+        marginBottom: 35,
     },
 });
 

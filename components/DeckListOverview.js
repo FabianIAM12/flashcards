@@ -61,7 +61,7 @@ class DeckListOverview extends Component {
 
 const styles = StyleSheet.create({
     List: {
-        padding: 8,
+        padding: 12,
         flex: 1,
         alignSelf: 'stretch',
     }

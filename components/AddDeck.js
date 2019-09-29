@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor: gray,
+        marginTop: 8,
         padding: 5,
         borderRadius: 5,
         shadowRadius: 5,

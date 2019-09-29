@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
         textAlign: "center",
         padding: 10,
         height: 400,
+        width: 420,
         backgroundColor: gray,
         shadowOpacity: 1,
         shadowColor: "rgba(0, 0, 0, 0.24)",

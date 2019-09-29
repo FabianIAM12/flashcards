@@ -31,12 +31,12 @@ const styles = StyleSheet.create({
         padding: 10
     },
     text: {
-        paddingTop: 50,
+        paddingTop: 60,
         fontSize: 28,
         fontWeight: "bold",
         textAlign: "center",
         color: purple,
-    }
+    },
 });
 
 export default Score;
